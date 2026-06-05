@@ -1,0 +1,18 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const { post, Content } = Astro.props;
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="article">
+    <header>
+      <div class="meta">
+        <time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toLocaleDateString('zh-CN')}</time>
+        {post.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}
+      </div>
+      <h1>{post.data.title}</h1>
+    </header>
+    <div class="content"><Content /></div>
+  </article>
+</BaseLayout>
