@@ -1,0 +1,62 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Package site
+        run: tar -czf site.tar.gz -C dist .
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "${{ secrets.SERVER_PORT }}" "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Upload package
+        run: |
+          scp -i ~/.ssh/deploy_key -P "${{ secrets.SERVER_PORT }}" site.tar.gz \
+            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/tmp/jrain-site.tar.gz
+
+      - name: Deploy
+        run: |
+          ssh -i ~/.ssh/deploy_key -p "${{ secrets.SERVER_PORT }}" \
+            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} '
+              set -e
+              ts=$(date +%F-%H%M%S)
+              tmp=/tmp/jrain-site-$ts
+              backup=/app.bak-github-$ts
+
+              mkdir -p "$tmp"
+              tar -xzf /tmp/jrain-site.tar.gz -C "$tmp"
+              test -f "$tmp/index.html"
+
+              mv /app "$backup"
+              mv "$tmp" /app
+
+              chown -R root:root /app
+              find /app -type d -exec chmod 755 {} +
+              find /app -type f -exec chmod 644 {} +
+
+              nginx -t
+              nginx -s reload
+
+              echo "deployed, backup=$backup"
+            '
