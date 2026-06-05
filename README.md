@@ -1,6 +1,6 @@
 # WANGJINXIN Astro Blog
 
-Astro 静态博客，迁移自早期 Hexo/NexT 站点。
+Astro 静态博客。
 
 ## 开发
 
