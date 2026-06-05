@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="最近在使用了下docker，期间遇到了不少问题，特别记录下： centos7使用systemctl报错问题 报Failed to get D-Bus connection: Operation not permitted错误 其实是权限问题 1.如果是docker命令的话加入docker run --privileged -d ...就行。 2.如果使用docker-compose.yml启动的"><meta name="generator" content="Astro v6.4.4"><link rel="icon" href="/favicon.ico"><link rel="alternate" type="application/atom+xml" title="WANGJINXIN" href="/atom.xml"><title>最近使用docker碰到的一些问题记录下 | WANGJINXIN</title><style>:root{color-scheme:dark;--bg: #101214;--paper: #171b1f;--paper-soft: #1e2429;--ink: #eef2f3;--muted: #9aa5aa;--line: #2b3339;--accent: #39d0b1;--accent-strong: #7ee7d0;--code-bg: #090b0d;--code-ink: #e5edf0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}*{box-sizing:border-box}html{background:var(--bg);color:var(--ink)}body{margin:0;min-height:100vh;font-size:16px;line-height:1.7;background:linear-gradient(180deg,rgba(57,208,177,.08),transparent 360px),radial-gradient(circle at 80% 0%,rgba(112,168,255,.1),transparent 360px),var(--bg)}a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}a:hover{color:var(--accent-strong)}.shell{width:min(100% - 32px,940px);margin:0 auto}.site-header{border-bottom:1px solid var(--line);background:#101214e0;backdrop-filter:blur(12px);position:sticky;top:0;z-index:5}.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{color:var(--ink);font-weight:750;letter-spacing:0;text-decoration:none}.brand span{color:var(--accent)}.nav-links{display:flex;align-items:center;gap:18px;font-size:14px}.nav-links a{color:var(--muted);text-decoration:none}.hero{padding:82px 0 44px}.eyebrow{margin:0 0 10px;color:var(--accent);font-size:14px;font-weight:700;text-transform:uppercase}h1,h2,h3{line-height:1.25;letter-spacing:0}h1{margin:0;max-width:780px;font-size:clamp(36px,7vw,68px)}.lede{max-width:680px;margin:20px 0 0;color:var(--muted);font-size:18px}.post-list{display:grid;gap:16px;padding:24px 0 72px}.post-card{padding:22px;border:1px solid var(--line);border-radius:8px;background:#171b1fc2}.post-card h2{margin:0 0 8px;font-size:24px}.post-card h2 a{color:var(--ink);text-decoration:none}.post-card h2 a:hover{color:var(--accent-strong)}.post-card p{max-width:720px;margin:10px 0 0;color:var(--muted)}.meta{display:flex;flex-wrap:wrap;gap:8px 14px;color:var(--muted);font-size:14px}.article{width:min(100% - 32px,820px);margin:0 auto;padding:64px 0 86px}.article header{padding-bottom:26px;border-bottom:1px solid var(--line)}.article h1{font-size:clamp(32px,6vw,54px)}.content{padding-top:26px}.content img{max-width:100%;height:auto}.content blockquote{margin:22px 0;padding:2px 0 2px 18px;border-left:4px solid var(--accent);color:var(--muted)}.content code{padding:2px 5px;border-radius:4px;background:var(--paper-soft);font-size:.92em}.content pre,.highlight table{width:100%;overflow-x:auto;border-radius:8px;background:var(--code-bg);color:var(--code-ink)}.content pre{padding:18px}.highlight{margin:18px 0}.highlight table{display:block;border-collapse:collapse}.highlight .gutter{display:none}.highlight .code pre{margin:0;padding:18px;white-space:pre}.tag{display:inline-flex;align-items:center;border:1px solid rgba(57,208,177,.35);border-radius:999px;padding:2px 10px;color:var(--accent-strong);font-size:13px;text-decoration:none;background:#39d0b114}.site-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}.gallery{columns:3 220px;column-gap:14px;padding:24px 0 78px}.gallery img{width:100%;margin:0 0 14px;break-inside:avoid;border-radius:8px;display:block;background:var(--paper);border:1px solid var(--line)}@media(max-width:640px){.nav{align-items:flex-start;flex-direction:column;padding:16px 0}.hero{padding-top:48px}}
+</style></head> <body> <header class="site-header"> <nav class="shell nav" aria-label="主导航"> <a class="brand" href="/">WANG<span>JINXIN</span></a> <div class="nav-links"> <a href="/archives/">归档</a> <a href="/2020/">相册</a> <a href="/about/">关于</a> <a href="/atom.xml">RSS</a> </div> </nav> </header>  <article class="article"> <header> <div class="meta"> <time datetime="2018-08-31T00:00:00.000Z">2018/8/31</time> <span class="tag">docker</span><span class="tag">centos</span> </div> <h1>最近使用docker碰到的一些问题记录下</h1> </header> <div class="content"><p>最近在使用了下docker，期间遇到了不少问题，特别记录下：</p>
+<h3 id="centos7使用systemctl报错问题">centos7使用<code>systemctl</code>报错问题</h3><blockquote>
+<p>报<code>Failed to get D-Bus connection: Operation not permitted</code>错误</p>
+</blockquote>
+<p>其实是权限问题</p>
+<p>1.如果是<code>docker</code>命令的话加入<code>docker run --privileged -d ...</code>就行。</p>
+<p>2.如果使用<code>docker-compose.yml</code>启动的话在配置文件中加入
+</p><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>services:
+  web:
+   image: ...
+   privileged: true
+</pre></td></tr></tbody></table></figure>
+<p>就可以了</p>
+<h3 id="centos7使用systemctl配置nginx自启动">centos7使用<code>systemctl</code>配置nginx自启动</h3><p>这个在网上有各种不一样的版本，个人推荐个简单的。</p>
+<p>1.首先使用<code>vim /lib/systemd/system/nginx.service</code>创建nginx.service 文件。</p>
+<p>2.文件中写入
+</p><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre>[Unit]
+Description=nginx 
+After=network.target 
+<p>[Service]
+Type=forking
+ExecStart=/usr/local/nginx/sbin/nginx -c &#x3C;nginx配置文件地址,这里可以不填>
+ExecReload=/usr/local/nginx/sbin/nginx -s reload
+ExecStop=/usr/local/nginx/sbin/nginx -s quit
+PrivateTmp=true</p>
+<p>[Install]
+WantedBy=multi-user.target
+</p></pre></td></tr></tbody></table></figure><p></p>
+<p>上面的<code>/usr/local/nginx/sbin/nginx</code>改成自己的nginx地址就行，保存退出。</p>
+<p>3.使用<code>systemctl enable nginx.service</code>把nginx加入开机启动服务就ok了。</p>
+<blockquote>
+<p>再次使用<code>systemctl</code>可以看到nginx.service加入到启动列表中</p>
+</blockquote></div> </article>  <footer class="site-footer"> <div class="shell">© 2026 WANGJINXIN. Powered by Astro.</div> </footer> </body></html>
