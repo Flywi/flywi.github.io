@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>WANGJINXIN</title>
+  <link href="https://jrain.cn/" />
+  <link href="https://jrain.cn/atom.xml" rel="self" />
+  <id>https://jrain.cn/</id>
+  <updated>2019-03-21T03:42:17.866Z</updated>
+<entry>
+  <title>Dockerfile问题解决</title>
+  <link href="https://jrain.cn/2019/03/21/docker-entry-point/" />
+  <id>https://jrain.cn/2019/03/21/docker-entry-point/</id>
+  <updated>2019-03-21T03:42:17.866Z</updated>
+  <summary>在windows环境中使用Dockerfile编译自己的镜像时运行镜像会出现报错 standard_init_linux.go:190: exec user process caused &quot;no such file or directory&quot; 部分代码如下1234COPY docker-entrypoint.sh /usr/local/bin/RUN ln -s usr/l</summary>
+</entry>
+<entry>
+  <title>最近使用docker碰到的一些问题记录下</title>
+  <link href="https://jrain.cn/2018/08/31/docker-problems/" />
+  <id>https://jrain.cn/2018/08/31/docker-problems/</id>
+  <updated>2018-08-31T07:43:41.268Z</updated>
+  <summary>最近在使用了下docker，期间遇到了不少问题，特别记录下： centos7使用systemctl报错问题 报Failed to get D-Bus connection: Operation not permitted错误 其实是权限问题 1.如果是docker命令的话加入docker run --privileged -d ...就行。 2.如果使用docker-compose.yml启动的</summary>
+</entry>
+<entry>
+  <title>第一篇博客</title>
+  <link href="https://jrain.cn/2018/07/17/hello-world/" />
+  <id>https://jrain.cn/2018/07/17/hello-world/</id>
+  <updated>2018-07-17T04:04:20.458Z</updated>
+  <summary>这个博客是基于Github 和 Hexo所作的，有兴趣的同志可以去看看相关的教程自己做一个，本身还是很简单的。 ##参考地址:点击链接 1start my blog!! ps其实很早就想搞一个自己的博客了。</summary>
+</entry>
+<entry>
+  <title>第二篇博客</title>
+  <link href="https://jrain.cn/2018/07/17/markdown/" />
+  <id>https://jrain.cn/2018/07/17/markdown/</id>
+  <updated>2018-07-17T10:05:11.686Z</updated>
+  <summary>为什么使用博客？主要是记录工作、学习中的一些问题，以备不时之需！</summary>
+</entry>
+</feed>
