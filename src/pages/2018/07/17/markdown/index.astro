@@ -1,0 +1,10 @@
+---
+import { getEntry, render } from 'astro:content';
+import PostLayout from '../../../../../layouts/PostLayout.astro';
+
+const post = await getEntry('posts', 'markdown');
+if (!post) throw new Error('Missing post: markdown');
+const { Content } = await render(post);
+---
+
+<PostLayout post={post} Content={Content} />
