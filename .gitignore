@@ -18,3 +18,14 @@ Thumbs.db
 # environment files
 .env
 .env.*
+
+# AI
+CLAUDE.md
+AGENTS.md
+.claude
+.cursor
+.github
+.lingma
+.kiro
+.agents
+.gitnexus
