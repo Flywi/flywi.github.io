@@ -1,0 +1,48 @@
+avatar: /uploads/head_img.jpg
+background:
+  - /images/background.jpg
+menu:
+  首页:
+    name: house
+    theme: solid
+    link: /
+  归档:
+    name: box-archive
+    theme: solid
+    link: /archives/
+  分类:
+    name: bookmark
+    theme: solid
+    link: /categories/
+  标签:
+    name: tags
+    theme: solid
+    link: /tags/
+  相册:
+    name: images
+    theme: solid
+    link: /2020/
+  关于:
+    name: id-card
+    theme: solid
+    link: /about/
+card:
+  enable: true
+  description: 记录技术、服务器和一点日常折腾。
+  iconLinks:
+    RSS:
+      name: rss
+      theme: solid
+      link: /atom.xml
+  friendLinks: {}
+footer:
+  since: 2018
+  ICP:
+    enable: false
+polyfill:
+  enable: false
+highlight:
+  enable: true
+  style: github
+search:
+  enable: true

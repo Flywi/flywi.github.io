@@ -1,0 +1,61 @@
+title: WANGJINXIN
+subtitle: 愿此行，终抵群星！
+description: 个人博客，记录技术、服务器和一点日常折腾。
+author: WANGJINXIN
+language: zh-CN
+timezone: Asia/Shanghai
+url: https://jrain.cn
+root: /
+permalink: :year/:month/:day/:title/
+pretty_urls:
+  trailing_index: false
+  trailing_html: false
+source_dir: source
+public_dir: dist
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+skip_render:
+  - images/**
+  - uploads/**
+  - live2dw/**
+  - favicon.ico
+  - robots.txt
+  - .nojekyll
+include:
+  - .nojekyll
+new_post_name: :title.md
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: false
+syntax_highlighter:
+highlight:
+  enable: false
+prismjs:
+  enable: false
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+archive_generator:
+  enabled: true
+  per_page: 0
+  yearly: false
+  monthly: false
+  daily: false
+per_page: 10
+pagination_dir: page
+theme: particlex
+feed:
+  type: atom
+  path: atom.xml
+  limit: 0
+sitemap:
+  path: sitemap.xml
