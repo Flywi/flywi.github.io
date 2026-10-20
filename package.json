@@ -1,16 +1,27 @@
 {
   "name": "jrain-blog",
   "version": "1.0.0",
-  "type": "module",
   "private": true,
   "scripts": {
-    "migrate": "node scripts/migrate-old-blog.mjs",
-    "dev": "astro dev --host 127.0.0.1",
-    "build": "astro build",
-    "preview": "astro preview --host 127.0.0.1"
+    "dev": "hexo server --ip 127.0.0.1 --port 4321",
+    "build": "hexo clean && hexo generate",
+    "preview": "hexo server --static --ip 127.0.0.1 --port 4321",
+    "new": "hexo new"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.3",
-    "astro": "^6.4.4"
-  }
+    "hexo": "8.1.2",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-feed": "^3.0.0",
+    "hexo-generator-index": "^4.0.0",
+    "hexo-generator-sitemap": "^3.0.1",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^7.0.1",
+    "hexo-server": "^3.0.0",
+    "hexo-theme-particlex": "2.8.1",
+    "js-yaml": "^4.2.0"
+  },
+  "hexo": { "version": "8.1.2" },
+  "engines": { "node": ">=22.12.0" }
 }
