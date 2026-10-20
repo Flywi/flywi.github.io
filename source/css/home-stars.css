@@ -1,0 +1,98 @@
+/* Homepage-only styling, kept outside the installed ParticleX theme. */
+#home-head {
+    background-color: #030b19;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+#home-head #home-background {
+    z-index: 0;
+}
+
+#home-head.stars-interactive #home-background {
+    opacity: 0.48;
+    transform: scale(1.06);
+    will-change: transform;
+}
+
+#home-stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    cursor: grab;
+    touch-action: pan-y;
+}
+
+#home-stars:active {
+    cursor: grabbing;
+}
+
+#home-stars:focus-visible {
+    outline: 1px solid #9bafcb;
+    outline-offset: -6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #home-head.stars-interactive #home-background {
+        opacity: 1;
+        transform: none;
+        will-change: auto;
+    }
+
+    #home-stars {
+        display: none;
+    }
+}
+
+#home-head #home-info {
+    position: relative;
+    z-index: 1;
+    width: min(920px, calc(100vw - 40px));
+    height: auto;
+    cursor: pointer;
+}
+
+#home-head #home-info .loop {
+    display: none;
+}
+
+#home-head #home-info .info {
+    width: 100%;
+    height: auto;
+    background: transparent;
+    border-radius: 0;
+    color: #edf3fc;
+    text-shadow: 0 2px 24px #0008;
+}
+
+#home-head #home-info .info .wrap {
+    padding: 36px 12px;
+}
+
+#home-head #home-info .info .wrap h1 {
+    color: #edf3fc;
+    font-size: clamp(30px, 5vw, 58px);
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin: 0 0 24px;
+}
+
+#home-head #home-info .info .wrap h3 {
+    font-size: clamp(18px, 2.3vw, 24px);
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    color: #d4e1f6;
+    margin: 0 0 18px;
+}
+
+#home-head #home-info .info .wrap h5 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: 0.06em;
+    color: #9bafcb;
+    margin: 0;
+}
