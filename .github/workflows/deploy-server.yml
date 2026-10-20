@@ -5,6 +5,10 @@ on:
     branches: [master]
   workflow_dispatch:
 
+concurrency:
+  group: deploy-server
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -48,15 +52,21 @@ jobs:
               tar -xzf /tmp/jrain-site.tar.gz -C "$tmp"
               test -f "$tmp/index.html"
 
-              mv /app "$backup"
-              mv "$tmp" /app
+              # Keep the /app directory inode: OpenResty bind-mounts it read-only.
+              docker exec 1Panel-openresty-2O10 openresty -t
+              test -d /app
+              cp -a /app "$backup"
+              rsync -a --delete "$tmp/" /app/
 
               chown -R root:root /app
               find /app -type d -exec chmod 755 {} +
               find /app -type f -exec chmod 644 {} +
 
-              nginx -t
-              nginx -s reload
+              docker exec 1Panel-openresty-2O10 openresty -t
+              docker exec 1Panel-openresty-2O10 openresty -s reload
+
+              curl --retry 3 --retry-delay 1 --fail --silent --show-error \
+                --resolve jrain.cn:443:127.0.0.1 --max-time 15 https://jrain.cn/ -o /dev/null
 
               echo "deployed, backup=$backup"
             '
