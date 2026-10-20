@@ -6,5 +6,3 @@ updated: 2018-07-17T10:05:11.686Z
 permalink: "/2018/07/17/markdown/"
 tags: []
 ---
-
-

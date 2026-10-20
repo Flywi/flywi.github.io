@@ -17,7 +17,7 @@ tags: ["docker"]
 ```dockerfile
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh
-# ENTRYPOINT 
+# ENTRYPOINT
 ENTRYPOINT ["/docker-entrypoint.sh"]
 ```
 
@@ -40,8 +40,6 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN yum install -y dos2unix
 RUN dos2unix /usr/local/bin/docker-entrypoint.sh
 RUN ln -s /usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh
-# ENTRYPOINT 
+# ENTRYPOINT
 ENTRYPOINT ["/docker-entrypoint.sh"]
 ```
-
-
