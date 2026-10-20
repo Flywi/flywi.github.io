@@ -1,0 +1,45 @@
+/* Native image cursors: no tracking overlay or animation loop. */
+@media (hover: hover) and (pointer: fine) {
+    html,
+    body,
+    #home-stars {
+        cursor: url('/images/cursor-arrow.svg?v=rounded2') 6 6, auto;
+    }
+
+    a,
+    button,
+    summary,
+    select,
+    label[for],
+    [role='button'],
+    input[type='button'],
+    input[type='submit'],
+    input[type='reset'],
+    input[type='checkbox'],
+    input[type='radio'],
+    #menu #mobile-menu .title,
+    #home-head #home-info,
+    #home-stars:active {
+        cursor: url('/images/cursor-pointer.svg') 13 5, pointer;
+    }
+
+    input:not([type]),
+    input[type='text'],
+    input[type='search'],
+    input[type='email'],
+    input[type='password'],
+    input[type='url'],
+    input[type='number'],
+    textarea,
+    [contenteditable='true'] {
+        cursor: text;
+    }
+
+    button:disabled,
+    input:disabled,
+    select:disabled,
+    textarea:disabled,
+    [aria-disabled='true'] {
+        cursor: not-allowed;
+    }
+}

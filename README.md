@@ -28,7 +28,8 @@ npm run new -- "文章标题"
 - 站点配置：`_config.yml`；主题配置：`_config.particlex.yml`。
 - 静态资源：`source/images/`、`source/uploads/` 等。
 - 主题通过 npm 固定版本安装，更新 `hexo-theme-particlex` 后重新构建即可，无需手动克隆主题。
-- 背景使用 ParticleX 自带图片，头像使用原站 `uploads/head_img.jpg`，可修改主题配置替换。
+- 首页使用极简星空背景，支持鼠标视差和拖动旋转；图片为 `source/images/background-stars.png`，样式与交互位于 `source/css/home-stars.css` 和 `source/js/home-stars.js`。
+- 头像使用原站 `uploads/head_img.jpg`，可修改主题配置替换。
 
 
 
