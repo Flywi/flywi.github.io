@@ -5,6 +5,7 @@ const { load } = require('js-yaml');
 hexo.extend.injector.register('head_end', '<link rel="stylesheet" href="/css/home-stars.css">', 'home');
 hexo.extend.injector.register('body_end', '<script src="/js/home-stars.js" defer></script>', 'home');
 hexo.extend.injector.register('head_end', '<link rel="stylesheet" href="/css/cursor.css">');
+hexo.extend.injector.register('body_end', '<script src="/js/cursor-trail.js" defer></script>');
 // Inline loader styles before theme CDN requests to avoid a white loading screen.
 hexo.extend.injector.register('head_begin', () => `<style>${readFileSync(join(hexo.base_dir, 'source/css/loading-stars.css'), 'utf8')}</style>`);
 hexo.extend.filter.register('after_render:html', (html) => html.replace(
