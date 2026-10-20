@@ -18,12 +18,6 @@ npm run build
 npm run preview
 ```
 
-构建目录仍为 `dist/`，现有 GitHub Pages 和服务器部署工作流继续使用此目录。服务器站点目录为 `/app`。
-
-服务器通过 1Panel OpenResty 容器 `1Panel-openresty-2O10` 提供服务，Compose 将宿主机 `/app` 只读挂载到容器 `/app`，站点配置使用 `root /app;`。配置检查使用 `docker exec 1Panel-openresty-2O10 openresty -t`。
-
-部署时备份 `/app`，再用 `rsync` 在目录内同步文件，保留挂载目录本身；不要通过重命名替换整个 `/app`，否则运行中的容器仍会读取旧目录。workflow 已串行化服务器部署，并在部署后检查源站 HTTP 状态。
-
 ## 写文章与配置
 
 ```bash
@@ -36,20 +30,5 @@ npm run new -- "文章标题"
 - 主题通过 npm 固定版本安装，更新 `hexo-theme-particlex` 后重新构建即可，无需手动克隆主题。
 - 背景使用 ParticleX 自带图片，头像使用原站 `uploads/head_img.jpg`，可修改主题配置替换。
 
-## 迁移说明
 
-从 Astro 迁移，保留 4 篇文章及其原始 URL、13 张相册照片、关于页、旧文章/标签入口和 `/atom.xml`。旧 HTML 代码表格转换为 Markdown 代码块以适配主题高亮。
 
-站点地图为 `/sitemap.xml`，旧 `/sitemap-index.xml` 入口也保留。ParticleX 默认使用 CDN 加载 Vue、图标、字体和高亮资源。
-
-旧 Astro 源码、资源、导入脚本和 Yarn 锁文件归档在 `legacy-astro/`，不参与 Hexo 构建。
-
-## 手动部署
-
-```bash
-npm run build
-tar -czf site.tar.gz -C dist .
-scp site.tar.gz jrain.cn:/tmp/jrain-site.tar.gz
-```
-
-在服务器备份 `/app` 后替换为解压后的站点文件。推送 `master` 会触发现有服务器和 GitHub Pages 部署工作流。
