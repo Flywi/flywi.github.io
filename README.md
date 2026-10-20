@@ -20,6 +20,10 @@ npm run preview
 
 构建目录仍为 `dist/`，现有 GitHub Pages 和服务器部署工作流继续使用此目录。服务器站点目录为 `/app`。
 
+服务器通过 1Panel OpenResty 容器 `1Panel-openresty-2O10` 提供服务，Compose 将宿主机 `/app` 只读挂载到容器 `/app`，站点配置使用 `root /app;`。配置检查使用 `docker exec 1Panel-openresty-2O10 openresty -t`。
+
+部署时备份 `/app`，再用 `rsync` 在目录内同步文件，保留挂载目录本身；不要通过重命名替换整个 `/app`，否则运行中的容器仍会读取旧目录。workflow 已串行化服务器部署，并在部署后检查源站 HTTP 状态。
+
 ## 写文章与配置
 
 ```bash
