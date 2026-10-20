@@ -32,17 +32,17 @@ services:
 
 ```markdown
 [Unit]
-Description=nginx 
-After=network.target 
-   
-[Service] 
-Type=forking 
+Description=nginx
+After=network.target
+
+[Service]
+Type=forking
 ExecStart=/usr/local/nginx/sbin/nginx -c <nginx配置文件地址,这里可以不填>
 ExecReload=/usr/local/nginx/sbin/nginx -s reload
 ExecStop=/usr/local/nginx/sbin/nginx -s quit
-PrivateTmp=true 
-   
-[Install] 
+PrivateTmp=true
+
+[Install]
 WantedBy=multi-user.target
 ```
 
