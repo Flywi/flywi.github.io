@@ -1,0 +1,123 @@
+html {
+    background-color: #030b19;
+}
+
+html #loading {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #dceaff;
+    background:
+        radial-gradient(ellipse at 50% 110%, #15365c 0%, transparent 65%),
+        #030b19;
+}
+
+#loading::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle, #cbe2ff99 0 0.7px, transparent 1px),
+        radial-gradient(circle, #8fbaec80 0 0.8px, transparent 1px),
+        radial-gradient(circle, #dceaff66 0 0.6px, transparent 1px);
+    background-size: 173px 191px, 277px 239px, 359px 307px;
+    background-position: 29px 47px, 131px 89px, 71px 181px;
+    opacity: 0.65;
+}
+
+#loading #loading-circle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    padding: 32px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+#loading .loading-orbit {
+    position: relative;
+    width: 76px;
+    height: 76px;
+    border: 1px solid #a0c9ff2b;
+    border-radius: 50%;
+    margin-bottom: 34px;
+}
+
+#loading .loading-star {
+    position: absolute;
+    inset: 25px;
+    background: #d6f3ff;
+    clip-path: polygon(50% 0%, 60% 39%, 100% 50%, 60% 61%, 50% 100%, 40% 61%, 0% 50%, 40% 39%);
+    animation: loading-breathe 2.8s ease-in-out infinite;
+}
+
+#loading .loading-satellite {
+    position: absolute;
+    inset: -1px;
+    border-radius: 50%;
+    animation: loading-orbit 4s linear infinite;
+}
+
+#loading .loading-satellite::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: calc(50% - 2px);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #b9eaff;
+    box-shadow: 0 0 10px 2px #78baff80;
+}
+
+#loading #loading-circle h2 {
+    color: #e4edfc;
+    font-family: system-ui, sans-serif;
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    margin: 0 0 16px;
+}
+
+#loading #loading-circle p {
+    color: #8ba3c4;
+    font-family: system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    margin: 0;
+}
+
+#loading .loading-dots {
+    display: inline-block;
+    width: 16px;
+    text-align: left;
+    animation: loading-breathe 2s ease-in-out infinite;
+}
+
+@keyframes loading-orbit {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes loading-breathe {
+    50% { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #loading .loading-star,
+    #loading .loading-satellite,
+    #loading .loading-dots {
+        animation: none;
+    }
+}
