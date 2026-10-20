@@ -1,6 +1,6 @@
 avatar: /uploads/head_img.jpg
 background:
-  - /images/background.jpg
+  - /images/background-stars.png
 menu:
   首页:
     name: house
